@@ -1,4 +1,7 @@
 export default ({ env }) => ({
+  'content-api': {
+    enabled: true,
+  },
   upload: {
     config: {
       provider: 'strapi-provider-cloudflare-r2',
