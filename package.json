@@ -11,6 +11,7 @@
     "develop": "strapi develop",
     "migrate": "node scripts/migrate.js",
     "start": "strapi start",
+    "start:prod": "NODE_ENV=production strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
@@ -23,6 +24,7 @@
     "form-data": "^4.0.4",
     "gray-matter": "^4.0.3",
     "node-fetch": "^3.3.2",
+    "pg": "^8.16.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",

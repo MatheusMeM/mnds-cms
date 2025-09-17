@@ -1,0 +1,54 @@
+services:
+  - type: web
+    name: mnds-cms
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: APP_KEYS
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: PGHOST
+        fromDatabase:
+          name: mnds-cms-db
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: mnds-cms-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: mnds-cms-db
+          property: database
+      - key: PGUSER
+        fromDatabase:
+          name: mnds-cms-db
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: mnds-cms-db
+          property: password
+      - key: PGSSL
+        value: true
+
+databases:
+  - name: mnds-cms-db
+    databaseName: mnds_cms
+    user: mnds_cms_user
+    plan: free
